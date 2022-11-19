@@ -22,4 +22,8 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
+    public Employee insert(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
 }

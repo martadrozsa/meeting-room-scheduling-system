@@ -4,11 +4,9 @@ import com.denisczwicz.employeeapi.controller.dto.EmployeeDTO;
 import com.denisczwicz.employeeapi.model.Employee;
 import com.denisczwicz.employeeapi.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +19,10 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping("/")
-    public List<EmployeeDTO> getAll()  {
+    public ResponseEntity<List<EmployeeDTO>> getAll()  {
         List<Employee> employees = employeeService.getAll();
         List<EmployeeDTO> employeeDTOList = EmployeeDTO.convertDTOList(employees);
-        return employeeDTOList;
+        return ResponseEntity.ok().body(employeeDTOList);
     }
 
     @GetMapping("/{id}")
@@ -34,5 +32,12 @@ public class EmployeeController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(new EmployeeDTO(optionalEmployee.get()));
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<EmployeeDTO> insert(@RequestBody EmployeeDTO employeeDTO) {
+        Employee employee = employeeDTO.convertEmployee();
+        employeeService.insert(employee);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
