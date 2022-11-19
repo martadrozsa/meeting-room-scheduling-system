@@ -1,13 +1,17 @@
 package com.denisczwicz.employeeapi.controller.dto;
 
 import com.denisczwicz.employeeapi.model.Employee;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class EmployeeDTO {
 
@@ -32,6 +36,15 @@ public class EmployeeDTO {
         employee.setAdmissionDate(LocalDate.parse(this.getAdmissionDate(), DATE_TIME_FORMATTER));
         employee.setBirthDate(LocalDate.parse(this.getBirthDate(), DATE_TIME_FORMATTER));
         return employee;
+    }
+
+    public static EmployeeDTO convertEmployeeDTO(Employee employee) {
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        employeeDTO.setId(employee.getId());
+        employeeDTO.setName(employee.getName());
+        employeeDTO.setAdmissionDate(DATE_TIME_FORMATTER.format(employee.getAdmissionDate()));
+        employeeDTO.setBirthDate(DATE_TIME_FORMATTER.format(employee.getBirthDate()));
+        return employeeDTO;
     }
 
     public static List<EmployeeDTO> convertDTOList(List<Employee> employeeList) {

@@ -26,4 +26,11 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    public Employee update(Long id, Employee employee) {
+        Employee saveEmployee = employeeRepository.getReferenceById(id);
+        saveEmployee.setId(employee.getId());
+        return employeeRepository.save(saveEmployee);
+    }
+
+
 }

@@ -26,7 +26,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<EmployeeDTO> getById(@PathVariable(name = "id")Long id) {
+    public ResponseEntity<EmployeeDTO> getById(@PathVariable(name = "id")Long id) {
         Optional<Employee> optionalEmployee = employeeService.getById(id);
         if (optionalEmployee.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -40,4 +40,13 @@ public class EmployeeController {
         employeeService.insert(employee);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<EmployeeDTO> update(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+        Employee employee = employeeDTO.convertEmployee();
+        Employee updateEmployee = employeeService.update(id, employee);
+        EmployeeDTO employeeDTOUpdated = EmployeeDTO.convertEmployeeDTO(updateEmployee);
+        return ResponseEntity.ok().body(employeeDTOUpdated);
+    }
+
 }
