@@ -25,4 +25,10 @@ public class RoomService {
     public Room insert(Room room) {
         return roomRepository.save(room);
     }
+
+    public Room update(Long id, Room room) {
+        Room saveRoom = roomRepository.getReferenceById(id);
+        saveRoom.setId(room.getId());
+        return roomRepository.save(saveRoom);
+    }
 }

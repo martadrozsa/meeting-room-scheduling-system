@@ -42,4 +42,12 @@ public class RoomController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<RoomDTO> update(@PathVariable Long id, @RequestBody RoomDTO roomDTO) {
+        Room room = roomDTO.convertRoom();
+        Room updateRoom = roomService.update(id, room);
+        RoomDTO roomDTOUpdated = RoomDTO.convertRoomDTO(updateRoom);
+        return ResponseEntity.ok().body(roomDTOUpdated);
+    }
+
 }
