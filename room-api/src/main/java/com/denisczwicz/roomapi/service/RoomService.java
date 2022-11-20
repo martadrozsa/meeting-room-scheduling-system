@@ -31,4 +31,8 @@ public class RoomService {
         saveRoom.setId(room.getId());
         return roomRepository.save(saveRoom);
     }
+
+    public void deleteById(Long id) {
+        roomRepository.deleteById(id);
+    }
 }

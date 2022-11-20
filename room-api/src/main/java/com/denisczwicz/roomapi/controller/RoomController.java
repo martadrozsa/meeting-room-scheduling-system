@@ -50,4 +50,10 @@ public class RoomController {
         return ResponseEntity.ok().body(roomDTOUpdated);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        roomService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
