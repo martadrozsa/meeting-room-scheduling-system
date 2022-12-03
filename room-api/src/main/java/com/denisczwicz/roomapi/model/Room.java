@@ -17,5 +17,6 @@ public class Room {
     @Column(nullable = false)
     private String name;
 
+    @Column(name = "numbers_of_places")
     private Integer numbersOfPlaces;
 }

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  meeting-room-scheduling-db:
+    image: mysql:8
+    restart: always
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./data/mysql_init.sql:/docker-entrypoint-initdb.d/1.sql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: pass
