@@ -19,6 +19,6 @@ public class Scheduler {
     @Column(nullable = false)
     private Long room;
 
-    @Column(nullable = false)
+    @Column(name = "reservation_date_and_time")
     private LocalDateTime  reservationDateAndTime;
 }

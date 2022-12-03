@@ -1,0 +1,26 @@
+server:
+  port: 8090
+  error:
+    include-message: always
+
+
+# datasource
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/scheduler?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: pass
+  sql:
+    init:
+      mode: always
+
+client:
+  employee:
+    name: employee
+    url: http://localhost:8092
+  room:
+    name: room
+    url: http://localhost:8091
