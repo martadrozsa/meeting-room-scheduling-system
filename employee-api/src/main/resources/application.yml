@@ -3,14 +3,9 @@ server:
   error:
     include-message: always
 
+# datasource
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/employee?useTimezone=true&serverTimezone=UTC
-    username: root
-    password: pass
-  sql:
-    init:
-      mode: always
+  application:
+    name: employee-api
+  config:
+    import: optional:configserver:http://localhost:8080

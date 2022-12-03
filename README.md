@@ -15,8 +15,8 @@ para criar os schemas e depois quando subir o projeto
 
 
 - DONE [**ms-agenda**] Conectando com base real
-- [**ms-agenda**] Endpoint de POST pra criar agendamento de acordo com as business rules
-- [**ms-agenda**] Endpoint de GET pra buscar agendamento de acordo com as business rules
+- DONE [**ms-agenda**] Endpoint de POST pra criar agendamento de acordo com as business rules
+- DONE [**ms-agenda**] Endpoint de GET pra buscar agendamento de acordo com as business rules
 
 - [extra] Tratamento de erro nos ms
 
