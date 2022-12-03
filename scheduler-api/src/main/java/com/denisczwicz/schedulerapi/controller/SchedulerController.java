@@ -4,9 +4,9 @@ import com.denisczwicz.schedulerapi.controller.dto.SchedulerDTO;
 import com.denisczwicz.schedulerapi.model.Scheduler;
 import com.denisczwicz.schedulerapi.service.SchedulerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +19,30 @@ public class SchedulerController {
 
     @GetMapping("/")
     public List<SchedulerDTO> findAll() {
-        List<Scheduler> data = schedulerService.getAll();
-        return SchedulerDTO.convertSchedulerList(data);
+        List<Scheduler> schedulers = schedulerService.getAll();
+        return SchedulerDTO.convertSchedulerList(schedulers);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<SchedulerDTO> save(@RequestBody SchedulerDTO schedulerDTO) {
+        if (schedulerDTO.getIdResponsible() == null) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
+
+        if (schedulerDTO.getIdRoom() == null) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
+
+        if (schedulerDTO.getReservationDateAndTime() == null || schedulerDTO.getReservationDateAndTime().isBlank()) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
+
+        SchedulerDTO dto = schedulerService.save(schedulerDTO.convertScheduler());
+
+        if (dto == null) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+        }
+
+        return ResponseEntity.ok(dto);
     }
 }

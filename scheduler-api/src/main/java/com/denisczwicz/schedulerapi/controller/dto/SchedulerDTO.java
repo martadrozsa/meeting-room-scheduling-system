@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +19,22 @@ import java.util.List;
 public class SchedulerDTO {
 
     private Long id;
-    private Long responsible;
-    private Long room;
-    private LocalDateTime reservationDateAndTime;
+
+    private Long idResponsible;
+    private String responsible;
+
+    private Long idRoom;
+    private String room;
+    private String reservationDateAndTime;
+
+    private static final DateTimeFormatter FORMAT_DATE_TIME = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
 
     public SchedulerDTO(Scheduler scheduler) {
         this.id = scheduler.getId();
-        this.responsible = scheduler.getResponsible();
-        this.room = scheduler.getRoom();
-        this.reservationDateAndTime = scheduler.getReservationDateAndTime();
+        this.idResponsible = scheduler.getResponsible();
+        this.idRoom = scheduler.getRoom();
+        this.reservationDateAndTime = scheduler.getReservationPeriod().format(FORMAT_DATE_TIME);
     }
 
     public Scheduler convertScheduler() {
@@ -35,9 +43,9 @@ public class SchedulerDTO {
         if (this.getId() != null) {
             scheduler.setId(this.getId());
         }
-        scheduler.setResponsible(this.getResponsible());
-        scheduler.setRoom(this.getRoom());
-        scheduler.setReservationDateAndTime(this.getReservationDateAndTime());
+        scheduler.setResponsible(this.getIdResponsible());
+        scheduler.setRoom(this.getIdRoom());
+        scheduler.setReservationPeriod(LocalDateTime.parse(this.getReservationDateAndTime(), FORMAT_DATE_TIME));
         return scheduler;
     }
 
