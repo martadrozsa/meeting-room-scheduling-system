@@ -1,33 +1,32 @@
-
-start project 
-docker-compose up
-para criar os schemas e depois quando subir o projeto
-
+Ordem para subir os serviços
+Config-server
+Eureka
+Gateway
+Room
+Employee
+Scheduler
 
 ## TODO:
 
 - DONE [**ms-funcionario**] Conectando com base real
-- [**ms-funcionario**] Configuração do banco de dados deve vir do proj-config
-
+- DONE [**ms-funcionario**] Configuração do banco de dados deve vir do proj-config
 
 - DONE [**ms-sala**] Conectando com base real
-- [**ms-sala**] Configuração do banco de dados deve vir do proj-config
+- DONE [**ms-sala**] Configuração do banco de dados deve vir do proj-config
 
 
 - DONE [**ms-agenda**] Conectando com base real
-- DONE [**ms-agenda**] Endpoint de POST pra criar agendamento de acordo com as business rules
-- DONE [**ms-agenda**] Endpoint de GET pra buscar agendamento de acordo com as business rules
+- DONE [**ms-agenda**] Endpoint de POST para criar agendamento de acordo com as business rules
+- DONE [**ms-agenda**] Endpoint de GET para buscar agendamento de acordo com as business rules
 
-- [extra] Tratamento de erro nos ms
+- DONE [extra] Tratamento de erro nos ms
 
-- [**ms-eureka**] Todos os serviços estarem configurados pra se registrar no Eureka
-- [**ms-eureka**] Todos os serviços que se comunicam com outros serviços, usar o Eureka pra descobrir o endereço dos
-  serviços
-    - ms-agenda se comunica com o ms-funcionario, ms-sala e proj-config
-    - ms-gateway se comunica com os ms de domínio
+- DONE [**ms-eureka**] Todos os serviços estarem configurados para se registrar no Eureka
+- DONE [**ms-eureka**] Todos os serviços que se comunicam com outros serviços, usar o Eureka para descobrir o endereço dos serviços
+    - DONE [**ms-agenda**] se comunica com o ms-funcionario, ms-sala e proj-config
+    - DONE [**ms-gateway**] se comunica com os ms de domínio
 
-
-- [**ms-config**] Tem que fornecer a configuração de banco que será consumida pelos ms
+- DONE [**ms-config**] Tem que fornecer a configuração de banco que será consumida pelos ms
 
 
 - [**ms-gateway**] Expõe todos os endpoints dos microserviços. Configurar as rotas e hosts pra expor os endpoints

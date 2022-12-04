@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route-room-api
+          uri: lb://room-api
+          predicates:
+            - Path=/room/**
+        - id: route-employee-api
+          uri: lb://employee-api
+          predicates:
+            - Path=/employee/**
+        - id: route-scheduler-api
+          uri: lb://scheduler-api
+          predicates:
+            - Path=/scheduler/**

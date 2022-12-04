@@ -27,7 +27,7 @@ public class SchedulerService {
     public List<Scheduler> getAll() {
         // TODO: antes de devolver os dados, bater no ms funcionario e sala pra pegar os nomes e preencher no obj Agenda.
         // TODO: fazer uma funcao que recebe a agenda e preenche esses dados. Fazer um for na lista de agendas pra chamar essa funcao.
-        return schedulerRepository.findAll();
+       return schedulerRepository.findAll();
     }
 
     public SchedulerDTO save(Scheduler scheduler) {
