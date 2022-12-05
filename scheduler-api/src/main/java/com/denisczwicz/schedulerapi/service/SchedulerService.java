@@ -24,27 +24,7 @@ public class SchedulerService {
 
     private final RoomClient roomClient;
 
-    public List<SchedulerDTO> getAll() {
-        // TODO: antes de devolver os dados, bater no ms funcionario e sala pra pegar os nomes e preencher no obj Agenda.
-        // TODO: fazer uma funcao que recebe a agenda e preenche esses dados. Fazer um for na lista de agendas pra chamar essa funcao.
-
-        //pegar as entradas na base (estão sem nome e sala/funcionario)
-
-        List<Scheduler> schedulerLists = schedulerRepository.findAll();
-
-        for (Scheduler scheduler : schedulerLists ) {
-
-
-        }
-
-
-        // fazer um forech em cima dessas entradas
-        //para cada entrada passar o id(da entrada dentro do for) para a funcGetByID
-        // salvar o resultado de getById em uma nova lista de schedulerDTO
-        // depois do loop retornar essa lista de schedulerDTO
-
-
-
+    public List<Scheduler> getAll() {
        return schedulerRepository.findAll();
     }
 
