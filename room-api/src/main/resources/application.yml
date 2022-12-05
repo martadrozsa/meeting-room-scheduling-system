@@ -16,9 +16,13 @@ eureka:
   instance:
     hostname: localhost
   client:
-    #    register-with-eureka: true
-    #    fetch-registry: true
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
 #  instance:
 #    preferIpAddress: true
+
+
+## clientes eureka precisam conhecer a localização do eureka
+## para poderem se registrar

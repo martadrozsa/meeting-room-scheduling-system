@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,6 +22,15 @@ public class SchedulerController {
     public List<SchedulerDTO> findAll() {
         List<Scheduler> schedulers = schedulerService.getAll();
         return SchedulerDTO.convertSchedulerList(schedulers);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<SchedulerDTO> getById(@PathVariable(name = "id")Long id) {
+        Optional<SchedulerDTO> optionalScheduler = schedulerService.getById(id);
+        if (optionalScheduler.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(optionalScheduler.get());
     }
 
     @PostMapping("/")

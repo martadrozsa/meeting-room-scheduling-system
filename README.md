@@ -6,6 +6,13 @@ Room
 Employee
 Scheduler
 
+Eureka - servidor onde os microsserviços se registram, pode ser em portas aleatórias
+o servidor eureka trata de registrar todas as instâncias, caso seja mais de uma, e quando precisamos do microsserviço, chamamos apenas pelo nome dele
+as configs de portas e localicação são automáticas 
+
+
+
+
 ## TODO:
 
 - DONE [**ms-funcionario**] Conectando com base real
