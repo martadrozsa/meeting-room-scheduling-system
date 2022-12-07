@@ -12,6 +12,21 @@ as configs de portas e localicação são automáticas
 
 
 
+- service-discovery nos ajuda a encontrar serviços para que possamos, de forma dinâmica, fazer as requisições para instâncias efêmeras (pouca duração)
+novas máquinas com ips e portas diferentes são criadas e destruídas o tempo todo.
+
+-o serviçe discovery nos proverá um repositório atualizado de todas as máquinas onlibe disponíveis para que possamos fazer nossas requisições
+para que o projeto seja apenas servidor e não cliente
+deve-se colocar essas duas confis
+
+
+serviços que precisar descobrir outros serviços e serviços que precisam ser descobertos se registam no eureka
+se tornando eureka-client
+eureka-server monitora os serviços e as instâncias
+
+por exemplo: quando ms-agenda precisa descobrir se tem salas vagas para criar um agendamento,
+ele envia para o eureka o nome do ms-sala e assim o eureka retorna para o ms-agenda o endereço do ms-sala (host e porta)
+
 
 ## TODO:
 
