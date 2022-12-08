@@ -37,6 +37,12 @@
 - DONE [**ms-gateway**] Expõe todos os endpoints dos microserviços. Configurar as rotas e hosts pra expor os endpoints
     - DONE Criar collection no postman pra testar. Gerar os curls e fornecer no trabalho.
 
+________________________________
+________________________________
+### Fluxograma da operação de agendamento
+
+![agendamento](https://user-images.githubusercontent.com/83780126/206332025-94d32469-22b3-45e5-b8dc-caf0b0a1e203.png)
+
 ### O projeto atual
 
 1. Serviço de ms-funcionario, que permite a realização do CRUD.
