@@ -9,5 +9,3 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 
-## para que o projeto seja apenas servidor e não cliente
-## deve-se colocar essas duas confis
