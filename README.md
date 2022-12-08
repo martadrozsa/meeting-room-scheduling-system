@@ -1,4 +1,6 @@
 ## Ordem para subir os serviços
+
+`docker-compose up`
 - Config-server
 - Eureka
 - Gateway
