@@ -28,7 +28,9 @@ public class EmployeeService {
 
     public Employee update(Long id, Employee employee) {
         Employee saveEmployee = employeeRepository.getReferenceById(id);
-        saveEmployee.setId(employee.getId());
+        saveEmployee.setName(employee.getName());
+        saveEmployee.setAdmissionDate(employee.getAdmissionDate());
+        saveEmployee.setBirthDate(employee.getBirthDate());
         return employeeRepository.save(saveEmployee);
     }
 

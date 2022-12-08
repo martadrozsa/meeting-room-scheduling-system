@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +25,19 @@ public class SchedulerService {
 
     private final RoomClient roomClient;
 
-    public List<Scheduler> getAll() {
-       return schedulerRepository.findAll();
+    public List<SchedulerDTO> getAll() {
+        List<Scheduler> schedulerLists = schedulerRepository.findAll();
+        List<SchedulerDTO> schedulerDTOList = new ArrayList<>();
+
+        for (Scheduler scheduler : schedulerLists ) {
+            Optional<SchedulerDTO> schedulerDTO = getById(scheduler.getId());
+            if (schedulerDTO.isEmpty()) {
+                continue;
+            }
+            schedulerDTOList.add(schedulerDTO.get());
+        }
+
+       return schedulerDTOList;
     }
 
     public Optional<SchedulerDTO> getById(Long id) {

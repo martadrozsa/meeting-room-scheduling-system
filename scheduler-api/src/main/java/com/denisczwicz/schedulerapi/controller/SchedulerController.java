@@ -19,10 +19,10 @@ public class SchedulerController {
     private final SchedulerService schedulerService;
 
     @GetMapping("/")
-    public List<SchedulerDTO> findAll() {
-        List<Scheduler> schedulers = schedulerService.getAll();
-        return SchedulerDTO.convertSchedulerList(schedulers);
+    public List<SchedulerDTO> getAll() {
+        return schedulerService.getAll();
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<SchedulerDTO> getById(@PathVariable(name = "id")Long id) {
