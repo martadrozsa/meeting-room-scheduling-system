@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,27 +26,18 @@ public class SchedulerService {
     private final RoomClient roomClient;
 
     public List<SchedulerDTO> getAll() {
-        // TODO: antes de devolver os dados, bater no ms funcionario e sala pra pegar os nomes e preencher no obj Agenda.
-        // TODO: fazer uma funcao que recebe a agenda e preenche esses dados. Fazer um for na lista de agendas pra chamar essa funcao.
-
-        //pegar as entradas na base (estão sem nome e sala/funcionario)
-
         List<Scheduler> schedulerLists = schedulerRepository.findAll();
+        List<SchedulerDTO> schedulerDTOList = new ArrayList<>();
 
         for (Scheduler scheduler : schedulerLists ) {
-
-
+            Optional<SchedulerDTO> schedulerDTO = getById(scheduler.getId());
+            if (schedulerDTO.isEmpty()) {
+                continue;
+            }
+            schedulerDTOList.add(schedulerDTO.get());
         }
 
-
-        // fazer um forech em cima dessas entradas
-        //para cada entrada passar o id(da entrada dentro do for) para a funcGetByID
-        // salvar o resultado de getById em uma nova lista de schedulerDTO
-        // depois do loop retornar essa lista de schedulerDTO
-
-
-
-       return schedulerRepository.findAll();
+       return schedulerDTOList;
     }
 
     public Optional<SchedulerDTO> getById(Long id) {
