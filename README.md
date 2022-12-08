@@ -1,31 +1,12 @@
-Ordem para subir os serviços
-Config-server
-Eureka
-Gateway
-Room
-Employee
-Scheduler
-
-Eureka - servidor onde os microsserviços se registram, pode ser em portas aleatórias
-o servidor eureka trata de registrar todas as instâncias, caso seja mais de uma, e quando precisamos do microsserviço, chamamos apenas pelo nome dele
-as configs de portas e localicação são automáticas 
+## Ordem para subir os serviços
+- Config-server
+- Eureka
+- Gateway
+- Room
+- Employee
+- Scheduler
 
 
-
-- service-discovery nos ajuda a encontrar serviços para que possamos, de forma dinâmica, fazer as requisições para instâncias efêmeras (pouca duração)
-novas máquinas com ips e portas diferentes são criadas e destruídas o tempo todo.
-
--o serviçe discovery nos proverá um repositório atualizado de todas as máquinas onlibe disponíveis para que possamos fazer nossas requisições
-para que o projeto seja apenas servidor e não cliente
-deve-se colocar essas duas confis
-
-
-serviços que precisar descobrir outros serviços e serviços que precisam ser descobertos se registam no eureka
-se tornando eureka-client
-eureka-server monitora os serviços e as instâncias
-
-por exemplo: quando ms-agenda precisa descobrir se tem salas vagas para criar um agendamento,
-ele envia para o eureka o nome do ms-sala e assim o eureka retorna para o ms-agenda o endereço do ms-sala (host e porta)
 
 
 ## TODO:
@@ -51,8 +32,8 @@ ele envia para o eureka o nome do ms-sala e assim o eureka retorna para o ms-age
 - DONE [**ms-config**] Tem que fornecer a configuração de banco que será consumida pelos ms
 
 
-- [**ms-gateway**] Expõe todos os endpoints dos microserviços. Configurar as rotas e hosts pra expor os endpoints
-    - Criar collection no postman pra testar. Gerar os curls e fornecer no trabalho.
+- DONE [**ms-gateway**] Expõe todos os endpoints dos microserviços. Configurar as rotas e hosts pra expor os endpoints
+    - DONE Criar collection no postman pra testar. Gerar os curls e fornecer no trabalho.
 
 ### O projeto atual
 
